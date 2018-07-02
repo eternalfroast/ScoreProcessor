@@ -184,3 +184,70 @@ public class ProcessScores {
 				String stored = (inputArray[countForMedian] + ",");
 				System.out.print(stored); // display the message to the user
 		}
+
+
+		/*since median has to formula that is one for even and another for odd. We assume two values*/
+		int firstValue = 0; //first value is used if there is odd number of data
+		int secondValue = 0;//first and second is used if there are even number of data
+		
+		double median = 0;
+
+		//checking if the file contains even number of data. IF true, if statement is initated
+		if (inputArray.length % 2 == 0){
+			firstValue = (inputArray.length - 1)/2; // first value in the middle of data
+			secondValue = (inputArray.length)/2;//second value in the middle of data
+			median = (inputArray[firstValue] + inputArray[secondValue])/2; // using the median formula
+
+		}else{ //if the number is odd, this formula is initated
+			median = inputArray[inputArray.length/2];
+
+		}
+		
+		
+		return("\n\nThe median is: " + median); // returns the String value median to the user
+	}//end of median method	
+
+
+	/*take the array of scores as an argument and return the mode of the scores in the season*/
+	public static String mode(int[] inputArray){
+			Arrays.sort(inputArray);
+			int modeValue1 = 0;
+			int modeValue2 = 0;
+			int maxCounter = 0;
+
+			//start of for loop
+			for (int countForMode = 0; countForMode< inputArray.length; ++countForMode){
+				int count = 0; //counter for the match
+				for (int countMatchUpdater = 0; countMatchUpdater<inputArray.length; ++countMatchUpdater){
+					if (inputArray[countMatchUpdater] == inputArray[countForMode]){
+						++count; // if the number of counter is same, then there is increment in the counter
+					}//end of foor loop
+
+					//if the current counter is more than the previous counter, then the if statement is used
+					if(count> maxCounter){
+						 maxCounter = count; // current counter is updated as maximum counter 
+						 modeValue1 = inputArray[countForMode]; //the value is set as mode value
+						 continue; //it continues untill the end of the loop
+					}//end of if loop
+
+					if (count == maxCounter){ //if there is two mode with same counter then this loop is activated
+						
+						modeValue2 = inputArray[countForMode]; //current value is stored as second mode
+							
+						continue;//continues till the completion of the loop
+						
+					}//end of if loop
+
+				}//end of foor loop
+			}//end of foor loop
+
+			//returning the String value of mode to the user along with the number of count each mode has
+			return("The mode is: " + modeValue1 + " and " + modeValue2 + " with each count of " + maxCounter);
+		}//end of mode method
+
+
+		
+		
+}
+
+	
