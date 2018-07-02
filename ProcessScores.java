@@ -150,3 +150,37 @@ public class ProcessScores {
 
 		return("\n\nThe range is:"+ range ); //returning the range in String form
 	}//end of range method
+
+	public static double average(int[] inputArray){
+		int average = inputArray[0];
+
+		//for loop for summing up all the data in the afl file
+		for (int countForAverage = 1; countForAverage < inputArray.length; countForAverage ++){
+				average = average + inputArray[countForAverage];
+			}
+
+		//average formula by diving the summed up data with all the number of array
+		average = average /inputArray.length;
+		return(average); //returnig the data as double since average could end up in fractions.
+	}//end of average method
+
+
+	/*takes array of scores as an argument and return the median score in the season*/
+	public static String median(int[] inputArray){
+		Arrays.sort(inputArray); //sorting the data in the asceding form.
+
+		//displaying to the user that sorting is going to be initited.
+		System.out.println("Sorting the numbers in asceding order:\n");
+		
+		//formating for showing the sorted data to the user
+		for (int countForMedian = 0; countForMedian<=inputArray.length -1; countForMedian++){
+				/*System.out.print(inputArray[i] + ",");*/
+
+				//makes sure there is no comma after the last data in the array
+				if (inputArray[countForMedian] == inputArray[inputArray.length-1]){
+					System.out.print(inputArray[inputArray.length-1]);
+					break;
+				}
+				String stored = (inputArray[countForMedian] + ",");
+				System.out.print(stored); // display the message to the user
+		}
